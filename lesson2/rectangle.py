@@ -11,16 +11,39 @@
 
 
 class Rectangle:
-    pass
+
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return (self.width + self.height) * 2
+
+    @classmethod
+    def from_diagonal(cls, diagonal, aspect_ratio=1):
+        """Класс-метод, принимающий диагональ прямоугольника и соотношение сторон и возвращающий объект класса"""
+        width = (diagonal ** 2 / (1 + aspect_ratio ** 2)) ** 0.5
+        height = width * aspect_ratio
+        return cls(width, height)
+
+    @staticmethod
+    def is_square(width, height):
+        if width == height:
+            return True
+        return False
 
 
-rectangle = Rectangle(4, 5)
-print(rectangle.area())  # 20
-print(rectangle.perimeter())  # 18
+if __name__ == '__main__':
+    rectangle = Rectangle(4, 5)
+    print(rectangle.area())  # 20
+    print(rectangle.perimeter())  # 18
 
-rectangle2 = Rectangle.from_diagonal(5)
-print(rectangle2.area())  # 12.5
-print(rectangle2.perimeter())  # 10
+    rectangle2 = Rectangle.from_diagonal(5)
+    print(rectangle2.area())  # 12.5
+    print(rectangle2.perimeter())  # 10
 
-print(Rectangle.is_square(4, 4))  # True
-print(Rectangle.is_square(4, 5))  # False
+    print(Rectangle.is_square(4, 4))  # True
+    print(Rectangle.is_square(4, 5))  # False
