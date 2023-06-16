@@ -17,14 +17,41 @@
 
 
 class Shape:
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def area(self):
+        return 0
 
 
-shape = Shape("Shape")
-print(shape.area())  # 0
+class Rectangle(Shape):
+    def __init__(self, name, width, height):
+        super().__init__(name)
+        self.width = width
+        self.height = height
 
-rect = Rectangle("Rectangle", 5, 10)
-print(rect.area())  # 50
+    def area(self):
+        s = int(self.width * self.height)
+        return s
 
-tri = Triangle("Triangle", 6, 4)
-print(tri.area())  # 12
+
+class Triangle(Shape):
+    def __init__(self, name, base, height):
+        super().__init__(name)
+        self.base = base
+        self.height = height
+
+    def area(self):
+        s = int(self.base * (self.height / 2))
+        return s
+
+
+if __name__ == '__main__':
+    shape = Shape("Shape")
+    print(shape.area())  # 0
+
+    rect = Rectangle("Rectangle", 5, 10)
+    print(rect.area())  # 50
+
+    tri = Triangle("Triangle", 6, 4)
+    print(tri.area())  # 12
