@@ -14,15 +14,25 @@
 
 
 class Bird:
-    pass
+    def fly(self):
+        print("Flying")
+
+class Penguin(Bird):
+    def fly(self):
+        print("I am a penguin and cannot fly")
+
+class Eagle(Bird):
+    def hunt(self):
+        print("Hunting")
 
 
-bird = Bird()
-bird.fly()  # Flying
+if __name__ == '__main__':
+    bird = Bird()
+    bird.fly()  # Flying
 
-penguin = Penguin()
-penguin.fly()  # I am a penguin and cannot fly
+    penguin = Penguin()
+    penguin.fly()  # I am a penguin and cannot fly
 
-eagle = Eagle()
-eagle.fly()  # Flying
-eagle.hunt()  # Hunting
+    eagle = Eagle()
+    eagle.fly()  # Flying
+    eagle.hunt()  # Hunting
